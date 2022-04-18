@@ -1,5 +1,5 @@
 function welcome(){
-    return 'Bem vindos ao cinema'
+  return 'Bem vindos ao cinema'
 }
 
 var REGISTER = 1;
@@ -8,47 +8,69 @@ var SELECT = 3;
 var PRINT = 4;
 var EXIT = 5;
 
+var movies = [];
+var option;
+
+class Movies {
+  constructor (movie_name, movie_genre, movie_rating){
+  this.movie_name = movie_name;
+  this.movie_genre = movie_genre;
+  this.movie_rating = movie_rating;
+  }
+}
 function menu(){
-    alert(`
-    Selecione uma opção
+  console.log(`
+  Selecione uma opção
 
-    [1] Cadastrar filme
-    [2] Remover filme
-    [3] Escolher filme
-    [4] Imprimir ingresso
-    [5] Sair`)
+  [1] Cadastrar filme
+  [2] Remover filme
+  [3] Escolher filme
+  [4] Imprimir ingresso
+  [5] Sair`)
 
-   return prompt('Digite um numero')
-}
+  option = parseInt(prompt('Digite um numero'));
+  while (option != 5){
 
-console.log( welcome() );
+    switch (option) {
 
-var option = parseInt( menu() ); 
-
-switch (option) {
-
-    case REGISTER:
-      console.log('Você selecionou Cadastrar')
-      break;
-    
-    case DELETE:
-      console.log('Você selecionou deletar')
-      break;
-
-    case SELECT:
-      console.log('Você selecionou Escolher')
+      case REGISTER:
+          
+        let name = prompt('Digite o nome do filme');
+        let genre = prompt('Digite o genero do filme');
+        let rating = prompt('Digite a classificação do filme');
+        movies.push( new Movies(name, genre, rating));
+            
+        menu();
+      break;      
+        
+      case DELETE:
+        console.log('Você selecionou deletar')
       break;
 
-    case PRINT:
-      console.log('Você selecionou Imprimir')
+      case SELECT:
+
+        movies.forEach(function(item, index){
+          console.log(index, item.movie_name, item.movie_genre, item.movie_rating)
+        });
+        menu()         
       break;
-    
-    case EXIT:
-      console.log('Você selecionou sair')
+
+      case PRINT:
+        console.log('Você selecionou Imprimir')
       break;
-    
-    default:
+        
+      case EXIT:
+        console.log('Você selecionou sair')
+      break;
+        
+      default:
         alert('Selecione um numero válido');
-       
+      break;
+            
+    }
+  }
 }
+console.log( welcome() );
+menu(); 
+
 
