@@ -1,7 +1,3 @@
-function welcome(){
-  return 'Bem vindos ao cinema'
-}
-
 var REGISTER = 1;
 var DELETE = 2;
 var SELECT = 3;
@@ -18,6 +14,13 @@ class Movies {
   this.movie_rating = movie_rating;
   }
 }
+console.log( welcome() );
+menu();
+
+function welcome(){
+  return 'Bem vindos ao cinema'
+}
+
 function menu(){
   console.log(`
   Selecione uma opção
@@ -70,7 +73,6 @@ function menu(){
     }
   }
 }
-console.log( welcome() );
-menu(); 
+
 
 
