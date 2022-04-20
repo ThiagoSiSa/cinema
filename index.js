@@ -17,6 +17,13 @@ class Movies {
 console.log( welcome() );
 menu();
 
+function prompt(query){
+    this.query = query
+    var readlineSync = require('readline-sync');
+    awnser= readlineSync.question(`${query} \n`);
+    return awnser;
+    }
+
 function welcome(){
   return 'Bem vindos ao cinema'
 }
